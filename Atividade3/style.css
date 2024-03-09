@@ -1,0 +1,91 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f5fa; /* Light, airy background */
+    color: #333; /* Dark text for readability */
+}
+
+header {
+    background-color: #005792; /* Bold blue header */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #e0e9f0;
+    border-radius: 5px;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 10px; 
+}
+
+nav a {
+    color: #003a63; /* Darker blue for links */
+    text-decoration: none;
+    padding: 8px 12px;
+}
+
+nav a:hover {
+    background-color: #cce0f0;  /* Subtle highlight on hover */
+}
+
+
+main section {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+main section h2 {
+    color: #004080; /* Darker shade of blue for headings */
+}
+
+img {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 10px;
+}
+
+/* Image Styles */
+picture {
+    display: block;
+    margin: 50px auto;
+    max-width: 40%; /* Responsive Image Sizing  */
+}
+
+img {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 10px;
+}
+
+/* List Styles */
+ul {
+    list-style: disc;
+    margin-left: 25px;
+}
+
+strong {
+    color: #002244; /* Darkest blue for emphasis */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #555;
+}
