@@ -1,0 +1,295 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color Scheme */
+body {
+    font-family: 'Tomorrow', sans-serif;
+    line-height: 1.5;
+    background-color: #111;
+    color: #ccc;
+}
+
+a {
+    color: cyan;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Layout and Grid System */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "main main sidebar"
+        "footer footer footer";
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+}
+
+/* Header Styles */
+header {
+    grid-area: header;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Main Content Area */
+main {
+    grid-area: main;
+    padding: 20px;
+}
+
+.breaking-news{
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.breaking-news .news-item{
+    background-color: #222;
+    padding: 10px;
+}
+
+header .logo img { 
+    max-width: 150px; /* Adjust the maximum width as desired */
+    height: auto;  /* Maintains aspect ratio */
+ }
+ 
+.breaking-news .news-item img{
+    padding: 10px; 
+    max-width: auto;   /* Prevent stretching the image */
+    height: 80%;       /* Maintain aspect ratio */
+    object-fit: cover;  /* Make the image fill the container*/
+}
+
+.breaking-news h3 {
+    font-weight: bold;
+}
+
+.featured-articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+.article-preview {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.article-preview img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Sidebar */
+aside {
+    grid-area: sidebar;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* Footer */
+footer {
+    grid-area: footer;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+p {
+    font-size: 16px;
+}
+
+/* Color Scheme */
+/* Define your color scheme here */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+button {
+    background-color: cyan;
+    /* A sample blue color */
+    color: #fff;
+    /* White text */
+    border: none;
+    /* Remove default borders */
+    padding: 10px 20px;
+    /* Add comfortable padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    /* Indicate it's clickable */
+    border-radius: 5px;
+    /* Slightly rounded corners */
+}
+
+.search-bar {
+    display: flex;
+    /* Keeps input and button aligned */
+    align-items: center;
+    background-color: #f2f2f2;
+    /* Light background */
+    border: 1px solid #ddd;
+    /* Subtle border */
+    border-radius: 25px;
+    /* Rounded input field */
+    padding: 10px;
+}
+
+.search-bar input[type="text"] {
+    border: none;
+    outline: none;
+    /* Remove default focus outline */
+    background-color: transparent;
+    font-size: 16px;
+    padding: 0 15px;
+    /* Adjust as needed */
+    flex: 1;
+    /* Allow input to expand */
+}
+
+.search-bar button {
+    background-color: cyan;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+.breaking-news {
+    text-align: center;
+    display: flex;
+    /* Activate flexbox layout */
+    justify-content: space-around;
+    /* Distribute items with space around them*/
+}
+
+.news-item {
+    flex: 1;
+    /* Items will grow to take up equal space */
+    margin: 10px;
+}
+
+.news-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.breaking-news h2 {
+    /* Specifically for Breaking News headers */
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 1000;
+    /* Example: Make it extra bold */
+}
+
+.spotlight img {
+    max-width: 50%; /* Makes the image responsive */
+    height: auto;  /* Maintains aspect ratio */
+    margin: 15px;  /* Adds space around the image */
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5); /* Adds a subtle shadow effect */
+  }
+
+  .spotlight {
+    padding: 10%;
+    text-align: left; /* Centers text content within the section */
+    display: flex;         /* Enables Flexbox for more advanced centering */
+    flex-direction: column;/* Arranges elements vertically */
+    align-items: center;   /* Centers elements horizontally */
+    justify-content: center; /* Optionally: Centers elements vertically */
+    min-height: 100vh;        /* Makes the spotlight section take up full viewport height */
+  } 
+  
+  .spotlight img {
+    max-width: 50%;   /* Makes the image responsive */
+    height: auto;      /* Maintains image aspect ratio */
+    margin: 15px auto; /* Centers the image with some space around */
+  } 
+  
+  .featured-articles {
+    /* Optional: Adds a container for overall spacing */
+    padding: 20px; 
+  }
+  
+  .featured-articles article {
+    margin-bottom: 30px;  /* Creates space between articles */
+    border: 1px solid #ccc; /* Adds a subtle border for visual separation */
+    padding: 20px;         /* Adds padding within each article */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Adds a subtle drop shadow */
+  }
+  
+  
+/* Animations and Transitions */
+/* Add any animations or transitions here */
+
+/* Icons and Graphics */
+/* Style icons and graphics here */
