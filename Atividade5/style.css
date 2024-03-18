@@ -1,0 +1,72 @@
+div {
+    width: 500px;
+    height: 500px;
+    background-color: gray;
+    height: 100vw;
+    width: 100vw;
+    
+}
+
+h2 {
+    color: gray;
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+    div {
+        background-color: orange;
+    }
+
+    h2::before {
+        content: "laranja";
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    div {
+        background-color: rgb(255, 0, 149);
+    }
+
+    h2::before {
+        content: "rosa";
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1080px) {
+    div {
+        background-color: red;
+    }
+
+    h2::before {
+        content: "vermelho";
+    }
+}
+
+@media (min-width: 1080px) and (max-width: 1366px) {
+    div {
+        background-color: purple;
+    }
+
+    h2::before {
+        content: "roxo";
+    }
+}
+
+@media (min-width: 1366px) and (max-width: 1920px) {
+    div {
+        background-color: yellow;
+    }
+
+    h2::before {
+        content: "amarelo";
+    }
+}
+
+@media (min-width: 1920px) {
+    div {
+        background-color: green;
+    }
+
+    h2::before {
+        content: "verde claro";
+    }
+}
