@@ -15,6 +15,8 @@ const calcMedia = ({ nota1, nota2, nota3 }) => (nota1 + nota2 + nota3) / 3;
 
 const mostrarMedia = (nome, media) => alert(`A média de ${nome} é: ${media.toFixed(2)}`);
 
+//
+
 do {
     let nome = prompt("Digite o nome do aluno:");
 } while(!confirm("Este é o teu nome de verdade???"));
