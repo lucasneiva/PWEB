@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Aluno {
+            constructor(RA, Nome) {
+                this.RA = RA;
+                this.Nome = Nome;
+            }
+        }
+
+        function Aluno2(RA, Nome) {
+            this.RA = RA;
+            this.Nome = Nome;
+        }
+
+        const aluno3 = {
+            RA: 123456,
+            Nome: "João"
+        };
+
+        const aluno1 = new Aluno(123456, "João");
+        const aluno2 = new Aluno2(123456, "João");
+
+        alert(JSON.stringify(aluno1));
+        alert(JSON.stringify(aluno2));
+        alert(JSON.stringify(aluno3));
+
+    </script>
+</body>
+
+</html>
