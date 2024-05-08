@@ -1,38 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário com Validação</title>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <script src="script.js"></script>
 </head>
+
 <body>
-    <form id="meuFormulario" onsubmit="return validar()">
-        <h2>Formulário Principal</h2>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome">
-        <span id="erroNome"></span> <br>
-      
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email">
-        <span id="erroEmail"></span> <br>
-      
-        <label for="comentario">Comentário:</label>
-        <textarea id="comentario" name="comentario"></textarea>
-        <span id="erroComentario"></span> <br>
-      
-        <h3>Pesquisa:</h3>
-        <label>Primeira vez nesta página??</label><br>
-        <input type="radio" name="pesquisa" value="sim"> Sim
-        <input type="radio" name="pesquisa" value="nao"> Não 
-        <span id="erroPesquisa"></span> <br>
-      
-        <button type="button" id="botaoEnviar">Enviar</button>
-        <button type="reset" id="limpar">Limpar</button>
+    <form class="formulario" id="formulario" name="nomeform" onsubmit="return validarFormulario();">
+        <h1 class="titulo">Formulário Principal</h1>
 
-        <span id="mensagemPesquisa"></span>
-      </form>
+        <label for="nomeCompleto">Nome Completo:</label><br>
+        <input type="text" id="nomeCompleto" name="nomeCompleto" minlength="10" required><br><br>
 
-      <script src="script.js"></script>
+        <label for="enderecoEmail">Endereço de Email:</label><br>
+        <input type="email" id="enderecoEmail" name="enderecoEmail" required autocomplete="email"><br><br>
+
+        <label for="caixaComentario">Comentário:</label><br>
+        <textarea id="caixaComentario" name="caixaComentario" minlength="20" required></textarea><br><br>
+
+        <h2 class="txtPesq">Pesquisa:</h2>
+
+        <p class="txtPesq">Primeira vez nesta página?</p>
+        <div class="conteiner">
+            <input type="radio" id="visitaAnteriorSim" name="visitaAnterior" value="SIM" required>
+            <label for="visitaAnteriorSim">SIM</label>
+            <input type="radio" id="visitaAnteriorNao" name="visitaAnterior" value="NAO">
+            <label for="visitaAnteriorNao">NAO</label>
+        </div>
+        <br><br>
+        <div class="conteiner">
+            <button class="botao" type="submit">Enviar</button>
+            <button class="botao" type="reset">Limpar</button>
+        </div>
+    </form>
+
 </body>
+
 </html>

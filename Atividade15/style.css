@@ -1,58 +1,65 @@
 body {
-    font-family: sans-serif; /* Escolha uma fonte legível */
-    background-color: #c0f0f0; /* Cor de fundo clara */
-  }
-  
-  form {
-    background-color: #40e0d0; /* Cor de fundo do formulário */
-    padding: 20px;
-    border-radius: 5px;
-    width: 400px; /* Ajuste a largura conforme necessário */
-    margin: 0 auto; /* Centraliza o formulário */
-  }
-  
-  h1 {
-    text-align: center;
-    color: #fff; /* Cor do título */
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    box-sizing: border-box; /* Inclui padding e border na largura total */
-    margin-bottom: 10px;
-  }
-  
-  .radio-group label {
-    display: inline-block; /* Exibe os labels dos radio buttons em linha */
-    margin-right: 20px;
-  }
-  
-  button {
-    background-color: #008CBA; /* Cor do botão */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #007095; /* Cor do botão ao passar o mouse */
-  }
-  
-  /* Estilo para as mensagens de erro */
-  .erro {
-    color: red;
-    font-size: 12px;
-    display: block;
-    margin-top: 5px;
-  }
+  font-family: sans-serif;
+  background-color: #c0f0f0;
+}
+
+form {
+  background-color: #40e0d0;
+  padding: 20px;
+  border-radius: 5px;
+  width: 450px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+.radio-group {
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #008CBA;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #007095;
+}
+
+.erro {
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  margin-top: 5px;
+  background-color: #ffecec;
+  padding: 5px;
+  border-radius: 3px;
+}
