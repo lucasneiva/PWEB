@@ -1,12 +1,8 @@
-var express = require('express');
-
-var app=express();
-
-app.set('view engine', 'ejs');
+var app = require('./app/config/server');
 
 try {
     app.listen(3000, function() {
-        console.log("servidor ta de pe familia");
+        console.log("servidor ta de pe");
     });    
 } catch (error) {
     console.log("deu ruim");
@@ -20,7 +16,7 @@ app.get("/historia", (req, res) => {
     res.render("informacao/historia");
 });
 
-app.get("/professores", (req, res) => {
+app.get("/informacao/professores", (req, res) => {
     res.render("informacao/professores");
 });
 
