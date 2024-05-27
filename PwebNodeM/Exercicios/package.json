@@ -1,14 +1,19 @@
 {
   "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
     "prompt-sync": "^4.2.0"
   },
   "name": "site_fatec",
   "version": "1.0.0",
   "description": "Site da Fatec Sorocaba",
   "main": "Callback1.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.1.1"
+  },
   "scripts": {
-    "test": "echo \\\"Er\""
+    "test": "echo \\\"Er\"",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +22,7 @@
   "keywords": [
     "atividade17"
   ],
-  "author": "Arthur Motter",
+  "author": "Lucas Neiva",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ArthurMotter/PWEB/issues"
