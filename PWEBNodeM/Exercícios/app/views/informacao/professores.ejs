@@ -4,13 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professores</title>
+    <style>
+        table#tabela1 tr td {
+            background: #ffc;
+        }
+
+        table#tabela1 tr.cabeca td {
+            background: #eee;
+        }
+    </style>
 </head>
 <body>
-    <h1>Professores</h1>
-    <ul>
-        <li>Denilce</li>
-        <li>Maria Angélia</li>
-        <li>Ana Carolina</li>
-    </ul>
+    <table border="1px" cellpadding="5px" ID="tabela1">
+        <tr class="cabeca">
+            <td>Nome</td>
+            <td>E-mail</td>
+        </tr>
+
+        <% console.log('QUANTIDADE DE REGISTROS ->' + profs.length);%>
+
+        <% for (let i = 0; i < profs.length; i++) {%>
+        
+        <tr>
+           <td><%= profs[i].NOME_PROFESSOR %></td> 
+           <td><%= profs[i].EMAIL_PROFESSOR %></td> 
+        </tr>
+
+        <% } %>
+    </table>
 </body>
 </html>
