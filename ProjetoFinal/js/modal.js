@@ -6,7 +6,7 @@ const taskIdInput = document.getElementById( 'taskId' );
 const taskTitleInput = document.getElementById( 'taskTitle' );
 const taskDueDateInput = document.getElementById( 'taskDueDate' );
 const taskAreaSelect = document.getElementById( 'taskArea' );
-const taskStatusSelect = document.getElementById( 'taskStatus' );
+const taskModalTitle = document.getElementById( 'taskModalTitle' );
 const taskPrioritySelect = document.getElementById( 'taskPriority' );
 
 let currentModalMode = 'create'; // 'create' or 'edit' or 'view'
@@ -19,7 +19,6 @@ function openTaskModal( task = {}, mode = 'create' ) {
     taskTitleInput.value = task.title || '';
     taskDueDateInput.value = task.dueDate || '';
     taskAreaSelect.value = task.area || 'Work';
-    taskStatusSelect.value = task.status || 'active';
     taskPrioritySelect.value = task.priority || 'medium';
 
     if ( currentModalMode === 'view' ) {
@@ -27,18 +26,26 @@ function openTaskModal( task = {}, mode = 'create' ) {
         taskTitleInput.readOnly = true;
         taskDueDateInput.readOnly = true;
         taskAreaSelect.disabled = true;
-        taskStatusSelect.disabled = true;
         taskPrioritySelect.disabled = true;
-
+        taskModalTitle.innerHTML = "Ver Tarefa";
         // Hide the "Save Task" button
         taskForm.querySelector( 'button[type="submit"]' ).style.display = 'none';
+    } else if ( currentModalMode === 'edit') {
+        taskTitleInput.readOnly = false;
+        taskDueDateInput.readOnly = false;
+        taskAreaSelect.disabled = false;
+        taskPrioritySelect.disabled = false;
+        taskForm.querySelector( 'button[type="submit"]' ).style.display = 'block';
+        taskModalTitle.innerHTML = "Editar Tarefa";
+
     } else {
         taskTitleInput.readOnly = false;
         taskDueDateInput.readOnly = false;
         taskAreaSelect.disabled = false;
-        taskStatusSelect.disabled = false;
         taskPrioritySelect.disabled = false;
         taskForm.querySelector( 'button[type="submit"]' ).style.display = 'block';
+        taskModalTitle.innerHTML = "Criar Tarefa";
+
     }
     taskModal.style.display = 'block';
 }
@@ -50,7 +57,6 @@ function closeTaskModal() {
     taskTitleInput.readOnly = false;
     taskDueDateInput.readOnly = false;
     taskAreaSelect.disabled = false;
-    taskStatusSelect.disabled = false;
     taskPrioritySelect.disabled = false;
     taskForm.querySelector( 'button[type="submit"]' ).style.display = 'block';
 

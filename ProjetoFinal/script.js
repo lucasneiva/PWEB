@@ -44,7 +44,6 @@ closeModalBtn.addEventListener( 'click', closeTaskModal );
 
 taskForm.addEventListener( 'submit', ( event ) => {
     event.preventDefault();
-    console.log("aqui")
     const taskId = taskIdInput.value;
     const title = taskTitleInput.value;
     const dueDate = taskDueDateInput.value;
