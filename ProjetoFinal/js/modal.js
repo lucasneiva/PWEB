@@ -14,12 +14,15 @@ let currentModalMode = 'create'; // 'create' or 'edit' or 'view'
 // Function to open the modal
 function openTaskModal( task = {}, mode = 'create' ) {
     currentModalMode = mode;
-    // Populate modal fields 
-    taskIdInput.value = task.id || '';
-    taskTitleInput.value = task.title || '';
-    taskDueDateInput.value = task.dueDate || '';
-    taskAreaSelect.value = task.area || 'Work';
-    taskPrioritySelect.value = task.priority || 'medium';
+    // Populate modal fields
+
+    if (task) {
+        taskIdInput.value = task.id || '';
+        taskTitleInput.value = task.title || '';
+        taskDueDateInput.value = task.dueDate || '';
+        taskAreaSelect.value = task.area || 'Work';
+        taskPrioritySelect.value = task.priority || 'medium';        
+    }
 
     if ( currentModalMode === 'view' ) {
         // Make form fields read-only
@@ -64,5 +67,4 @@ function closeTaskModal() {
 }
 
 closeModalBtn.addEventListener( 'click', closeTaskModal );
-
 export { openTaskModal, closeTaskModal };
