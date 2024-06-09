@@ -9,6 +9,7 @@ const taskDueDateInput = document.getElementById( 'taskDueDate' );
 const taskAreaSelect = document.getElementById( 'taskArea' );
 const taskModalTitle = document.getElementById( 'taskModalTitle' );
 const taskPrioritySelect = document.getElementById( 'taskPriority' );
+const taskDescriptionInput = document.getElementById('taskDescription'); // Add this line
 const markAsEncerradaBtn = document.getElementById( 'markAsEncerradaBtn' ); // Add this line
 
 let currentModalMode = 'create';
@@ -22,6 +23,7 @@ function openTaskModal( tasks, task = {}, mode = 'create' ) {
         taskDueDateInput.value = task.dueDate || '';
         taskAreaSelect.value = task.area || 'Profissional';
         taskPrioritySelect.value = task.priority || 'baixa';
+        taskDescriptionInput.value = task.description || ''; // Populate description
     }
 
     if ( currentModalMode === 'view' ) {
@@ -35,6 +37,7 @@ function openTaskModal( tasks, task = {}, mode = 'create' ) {
         taskDueDateInput.readOnly = true;
         taskAreaSelect.disabled = true;
         taskPrioritySelect.disabled = true;
+        taskDescriptionInput.readOnly = true; // Disable the description field for viewing
         taskModalTitle.innerHTML = "Ver Tarefa";
         taskForm.querySelector( 'button[type="submit"]' ).style.display = 'none';
     } else if ( currentModalMode === 'edit' ) {
@@ -42,6 +45,7 @@ function openTaskModal( tasks, task = {}, mode = 'create' ) {
         taskDueDateInput.readOnly = false;
         taskAreaSelect.disabled = false;
         taskPrioritySelect.disabled = false;
+        taskDescriptionInput.readOnly = false; // Enable the description field for editing
         taskForm.querySelector( 'button[type="submit"]' ).style.display = 'block';
         taskModalTitle.innerHTML = "Editar Tarefa";
     } else {
@@ -49,6 +53,7 @@ function openTaskModal( tasks, task = {}, mode = 'create' ) {
         taskDueDateInput.readOnly = false;
         taskAreaSelect.disabled = false;
         taskPrioritySelect.disabled = false;
+        taskDescriptionInput.readOnly = false; // Enable the description field for creating
         taskForm.querySelector( 'button[type="submit"]' ).style.display = 'block';
         taskModalTitle.innerHTML = "Criar Tarefa";
     }
@@ -62,13 +67,14 @@ function openTaskModal( tasks, task = {}, mode = 'create' ) {
             dueDate: taskDueDateInput.value,
             area: taskAreaSelect.value,
             priority: taskPrioritySelect.value,
+            description: taskDescriptionInput.value, // Get description value
             status: currentModalMode === 'create' ? 'active' : task.status
         };
 
         if ( currentModalMode === 'create' ) {
-            tasks = createTask( tasks, newTask.title, newTask.dueDate, newTask.area, newTask.status, newTask.priority );
+            tasks = createTask( tasks, newTask.title, newTask.dueDate, newTask.area, newTask.status, newTask.priority, newTask.description ); // Pass description
         } else if ( currentModalMode === 'edit' ) {
-            tasks = updateTask( tasks, newTask.id, newTask.title, newTask.dueDate, newTask.area, newTask.status, newTask.priority );
+            tasks = updateTask( tasks, newTask.id, newTask.title, newTask.dueDate, newTask.area, newTask.status, newTask.priority, newTask.description ); // Pass description
         }
 
         saveTasks(tasks);
@@ -80,7 +86,7 @@ function openTaskModal( tasks, task = {}, mode = 'create' ) {
     markAsEncerradaBtn.onclick = function () {
         if ( currentModalMode !== 'create' ) {
             task.status = 'encerrada';
-            tasks = updateTask( tasks, task.id, task.title, task.dueDate, task.area, task.status, task.priority );
+            tasks = updateTask( tasks, task.id, task.title, task.dueDate, task.area, task.status, task.priority, task.description ); // Pass description
             renderTasks( tasks );
             closeTaskModal();
         }

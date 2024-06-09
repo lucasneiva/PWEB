@@ -11,14 +11,15 @@ function saveTasks(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-function createTask(tasks, title, dueDate, area, status, priority) {
+function createTask(tasks, title, dueDate, area, status, priority, description) {
     const newTask = {
         id: generateUniqueId(),
         title: title,
         dueDate: dueDate,
         area: area,
         status: status,
-        priority: priority
+        priority: priority,
+        description: description // Add description to the new task
     };
 
     tasks.push(newTask);
@@ -26,7 +27,7 @@ function createTask(tasks, title, dueDate, area, status, priority) {
     return tasks;
 }
 
-function updateTask(tasks, taskId, title, dueDate, area, status, priority) {
+function updateTask(tasks, taskId, title, dueDate, area, status, priority, description) {
     const taskIndex = tasks.findIndex(task => task.id === taskId);
 
     if (taskIndex !== -1) {
@@ -36,7 +37,8 @@ function updateTask(tasks, taskId, title, dueDate, area, status, priority) {
             dueDate: dueDate,
             area: area,
             status: status,
-            priority: priority
+            priority: priority,
+            description: description // Update description if it's changed
         };
         saveTasks(tasks);
     }
