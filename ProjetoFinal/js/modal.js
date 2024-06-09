@@ -1,6 +1,5 @@
-import { createTask, updateTask, generateUniqueId } from "./task.js";
+import { createTask, updateTask, saveTasks, loadTasks, generateUniqueId } from "./task.js";
 import { renderTasks } from '../script.js';
-
 const taskModal = document.getElementById( 'taskModal' );
 const closeModalBtn = document.querySelector( '.close-modal' );
 const taskForm = document.getElementById( 'taskForm' );
@@ -10,6 +9,7 @@ const taskDueDateInput = document.getElementById( 'taskDueDate' );
 const taskAreaSelect = document.getElementById( 'taskArea' );
 const taskModalTitle = document.getElementById( 'taskModalTitle' );
 const taskPrioritySelect = document.getElementById( 'taskPriority' );
+const markAsEncerradaBtn = document.getElementById( 'markAsEncerradaBtn' ); // Add this line
 
 let currentModalMode = 'create';
 
@@ -21,7 +21,13 @@ function openTaskModal( tasks, task = {}, mode = 'create' ) {
         taskTitleInput.value = task.title || '';
         taskDueDateInput.value = task.dueDate || '';
         taskAreaSelect.value = task.area || 'Profissional';
-        taskPrioritySelect.value = task.priority || 'medium';
+        taskPrioritySelect.value = task.priority || 'baixa';
+    }
+
+    if ( currentModalMode === 'view' ) {
+        markAsEncerradaBtn.style.display = 'block'; // Show the button
+    } else {
+        markAsEncerradaBtn.style.display = 'none'; // Hide the button
     }
 
     if ( currentModalMode === 'view' ) {
@@ -56,7 +62,7 @@ function openTaskModal( tasks, task = {}, mode = 'create' ) {
             dueDate: taskDueDateInput.value,
             area: taskAreaSelect.value,
             priority: taskPrioritySelect.value,
-            status: 'active'
+            status: currentModalMode === 'create' ? 'active' : task.status
         };
 
         if ( currentModalMode === 'create' ) {
@@ -65,14 +71,26 @@ function openTaskModal( tasks, task = {}, mode = 'create' ) {
             tasks = updateTask( tasks, newTask.id, newTask.title, newTask.dueDate, newTask.area, newTask.status, newTask.priority );
         }
 
+        saveTasks(tasks);
+        tasks = loadTasks();
         renderTasks( tasks );
         closeTaskModal();
+    };
+
+    markAsEncerradaBtn.onclick = function () {
+        if ( currentModalMode !== 'create' ) {
+            task.status = 'encerrada';
+            tasks = updateTask( tasks, task.id, task.title, task.dueDate, task.area, task.status, task.priority );
+            renderTasks( tasks );
+            closeTaskModal();
+        }
     };
 
     taskModal.style.display = 'block';
 }
 
 function closeTaskModal() {
+    taskForm.reset();
     taskModal.style.display = 'none';
 }
 

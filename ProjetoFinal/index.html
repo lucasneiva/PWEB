@@ -17,14 +17,14 @@
 
 
             <div class="task-area-container" id="taskAreaContainer">
-                <div class="task-area"  data-area="Pessoal">
+                <div class="task-area" data-area="Pessoal">
                 </div>
                 <div class="task-area" data-area="Profissional">
                 </div>
                 <div class="task-area" data-area="Acadêmica">
                 </div>
             </div>
-            
+
 
             <button id="createTaskBtn">Criar Tarefa</button>
 
@@ -38,7 +38,6 @@
             </div>
             <div class="legend-vencimento">
                 <h3>Vencimento</h3>
-                <span class="vencimento-indicator vence"></span> Vence hoje
                 <span class="vencimento-indicator vencido"></span> Venceu
             </div>
             <div class="legend-prioridade">
@@ -48,10 +47,10 @@
                 <span class="prioridade-indicator alta"></span> Alta
             </div>
         </footer>
-        
+
         <script src="script.js"></script>
     </div>
-    
+
     <div id="taskModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">X</span>
@@ -62,7 +61,7 @@
                 <input type="text" id="taskTitle" placeholder="Nome tarefa" required>
                 <label for="taskDueDate">Término:</label>
                 <input type="date" id="taskDueDate" required>
-                <label for="taskPriority">Área:</label>
+                <label for="taskArea">Área:</label>
                 <select id="taskArea">
                     <option value="Profissional">Profissional</option>
                     <option value="Pessoal">Pessoal</option>
@@ -70,11 +69,14 @@
                 </select>
                 <label for="taskPriority">Prioridade:</label>
                 <select id="taskPriority">
-                    <option value="low">Baixo</option>
-                    <option value="medium">Media</option>
-                    <option value="high">Alto</option>
+                    <option value="baixa">Baixo</option>
+                    <option value="media">Media</option>
+                    <option value="alta">Alto</option>
                 </select>
                 <button type="submit">Salvar Tarefa</button>
+                <!-- Inside the modal HTML structure -->
+                <button id="markAsEncerradaBtn" style="display: none;">Encerrar Tarefa</button>
+
             </form>
         </div>
     </div>

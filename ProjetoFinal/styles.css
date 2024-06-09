@@ -99,6 +99,24 @@ main {
     margin-right: 5px;
 }
 
+.priority-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.priority-indicator.baixo {
+    background-color: #00E676;
+    /* Bright Green */
+}
+
+.priority-indicator.alto {
+    background-color: #FF1744;
+    /* Bright Green */
+}
+
 .status-indicator.active {
     background-color: #00E676;
     /* Bright Green */

@@ -1,4 +1,4 @@
-import { createTask, updateTask, deleteTask, loadTasks } from './js/task.js';
+import { createTask, updateTask, deleteTask, loadTasks, saveTasks } from './js/task.js';
 import { openTaskModal } from './js/modal.js';
 
 const taskAreaContainer = document.getElementById( 'taskAreaContainer' );
@@ -18,13 +18,27 @@ export function renderTasks( tasks ) {
         Acadêmica: []
     };
 
+    const today = new Date().setHours(0, 0, 0, 0); // Get today's date without time
+
     tasks.forEach( task => {
+
+        const dueDate = new Date(task.dueDate).setHours(0, 0, 0, 0); // Get task's due date without time
+        let vencimentoHTML = '';
+
+        if (dueDate < today) {
+            vencimentoHTML = '<span class="vencimento-indicator vencido"></span>';
+        }
+
+
+        const formattedDueDate = new Date(task.dueDate).toLocaleDateString('pt-BR');
+
+        const taskTitle = task.status === 'encerrada' ? `<del>${task.title}</del>` : task.title;
         const taskCardHTML = `
             <div class="task-card" data-task-id="${task.id}">
-                <h3>${task.title}</h3>
-                <p>Término: ${task.dueDate}</p>
-                <span class="status-indicator ${task.status === 'active' ? 'active' : 'inactive'}"></span> 
-                <span class="priority-indicator ${task.priority}"></span> 
+                <h3>${taskTitle}</h3>
+                <p>Término: ${formattedDueDate}</p>
+                ${vencimentoHTML}
+                <span class="prioridade-indicator ${task.priority}"></span> 
                 <button class="open-task-modal-btn">Abrir</button>
                 <button class="edit-task-btn">Editar</button>
                 <button class="delete-task-btn">Deletar</button>
@@ -72,9 +86,11 @@ export function renderTasks( tasks ) {
         button.addEventListener( 'click', ( event ) => {
             const taskCard = event.target.closest( '.task-card' );
             const taskId = taskCard.dataset.taskId;
-            if ( confirm( 'Are you sure you want to delete this task?' ) ) {
+            if ( confirm( 'Certeza que quer deletar?' ) ) {
                 tasks = deleteTask( tasks, taskId );
+                saveTasks(tasks);
                 renderTasks( tasks );
+                location.reload();
             }
         } );
     } );
